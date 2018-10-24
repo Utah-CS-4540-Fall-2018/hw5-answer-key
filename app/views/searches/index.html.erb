@@ -1,0 +1,20 @@
+<h3>Your Searches</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keywords</th>
+      <th>Listings Found<th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id='search-list'>
+    <%= render 'search_list' %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Search', new_search_path %>
+<%= link_to 'Run Search on KSL', run_listings_poll_path, remote: true %>

@@ -1,0 +1,34 @@
+# == Schema Information
+#
+# Table name: listings
+#
+#  id               :integer          not null, primary key
+#  description      :text
+#  price            :float
+#  pricing          :string
+#  title            :string
+#  url              :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  listings_poll_id :integer
+#
+# Indexes
+#
+#  index_listings_on_listings_poll_id  (listings_poll_id)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  title: MyString
+  description: MyText
+  pricing: MyString
+  listings_poll: one
+
+two:
+  url: MyString
+  title: MyString
+  description: MyText
+  pricing: MyString
+  listings_poll: two
