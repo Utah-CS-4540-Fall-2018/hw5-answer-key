@@ -18,7 +18,19 @@
 #
 
 class Listing < ApplicationRecord
-  belongs_to :listings_poll
   has_many :listing_searches
   has_many :searches, through: :listing_searches
+  has_many :users, through: :searches  
+
+  # one way of doing the scopes...
+  scope :low_cost,    -> { where(price: 0..99.99) }
+  scope :medium_cost, -> { where(price: 100..499.99) }
+  scope :high_cost,   -> { where(price: 500..Float::INFINITY) }
+
+  # ...and another way.
+  # scope :low_cost,    -> { where("price >= ? and price < ?", 0, 100) }
+  # scope :medium_cost, -> { where("price >= ? and price < ?", 100, 500) }
+  # scope :high_cost,   -> { where("price >= ?", 500) }
+
+
 end

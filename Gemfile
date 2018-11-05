@@ -40,6 +40,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # to annotate the models
 gem 'annotate'
 
+# bootstrap for styling
+gem 'bootstrap-sass'
+
 # to give us jQuery functionality
 gem 'jquery-rails'
 

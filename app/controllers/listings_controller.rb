@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    @listing = current_user.listings.build
   end
 
   # GET /listings/1/edit

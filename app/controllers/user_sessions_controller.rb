@@ -17,9 +17,9 @@ class UserSessionsController < ApplicationController
       redirect_to root_path
     else
       if user_session_params[:email]
-        flash.notice = "Please enter an email address to login."
-      else
         flash.notice = 'We were unable to find that email address in our records.'
+      else
+        flash.notice = "Please enter an email address to login."
       end
       render :new
     end

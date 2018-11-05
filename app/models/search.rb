@@ -20,4 +20,10 @@ class Search < ApplicationRecord
 
   validates :keywords, presence: true
   validates :keywords, uniqueness: { scope: :user_id }
+
+  validates :keywords, 
+    exclusion: { 
+      in: ['not', 'nice', 'words'], 
+      message: "Tsk, tsk, please refrain from bad language in the keywords" 
+    }
 end

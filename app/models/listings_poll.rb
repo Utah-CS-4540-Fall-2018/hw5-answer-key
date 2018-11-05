@@ -62,26 +62,15 @@ class ListingsPoll < ApplicationRecord
     listings = @results_page.find_elements(:css, '.listing-item')
     log("Found #{listings.count} listings.")
     
-    # For Impress Me Points
-    # TODO:  drill into the @results_page for the listings and add
-    # of them to the listings associated with the search.
-    #
-    # if your listings came out in JSON form, you could do something 
-    # like this:
-    #
-    #   @search.listings << self.listings.create( 
-    #     title:  raw_listing["title"],
-    #     description: raw_listing["description"],
-    #     pricing: raw_listing["price"],
-    #     url: raw_listing["id"]
-    #   )
-    #   log("Captured: #{raw_listing['title']}")
-    #
-    # You may want to lookup the API for Selenium/Webdriver to see
-    # how to interrogate the @results_page object. 
-    # Some helpful links:
-    #  https://seleniumhq.github.io/selenium/docs/api/rb/top-level-namespace.html
-    #  https://gist.github.com/kenrett/7553278
+    listings.each do |l|
+      @search.listings << self.listings.create(
+        title: l.find_element(class: 'item-info-title-link').attribute('innerHTML'),
+        description: l.find_element(class: 'item-description').attribute('innerHTML'),
+        pricing: l.find_element(class: 'item-info-price').attribute('innerHTML'),
+        url: l.find_element(class: 'listing-item-link').attribute('href'),
+        listings_poll_id: self.id
+      )
+    log("Recorded listing titled #{l.find_element(class: 'item-info-title-link').attribute('innerHTML')}")
   end
 
 

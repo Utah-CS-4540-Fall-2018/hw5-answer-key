@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_211027) do
+ActiveRecord::Schema.define(version: 2018_10_31_234703) do
 
   create_table "listing_searches", force: :cascade do |t|
     t.integer "search_id"
