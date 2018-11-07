@@ -12,15 +12,12 @@ class UserSessionsController < ApplicationController
     # should be allowed into the system.  for this version, we're just
     # going to check that the user's email is in our user table.
     user = User.find_by(email: user_session_params[:email])
-    if user
+    if user.present?
       session[:user] = user.id
+      flash.notice = nil
       redirect_to root_path
     else
-      if user_session_params[:email]
-        flash.notice = 'We were unable to find that email address in our records.'
-      else
-        flash.notice = "Please enter an email address to login."
-      end
+      flash.notice = "Bad credentials.  Please try again."
       render :new
     end
   end
@@ -35,6 +32,6 @@ class UserSessionsController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_session_params
-      params.permit(:email)
+      params.require(:login).permit(:email, :commit)
     end
 end

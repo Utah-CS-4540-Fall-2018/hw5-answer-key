@@ -7,7 +7,14 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    current_user != nil
+    if current_user.present?
+      return true
+    else
+      return false
+    end
+
+    # or
+    # current_user != nil
   end
 
   def must_be_logged_in

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_234703) do
+ActiveRecord::Schema.define(version: 2018_11_05_230633) do
 
   create_table "listing_searches", force: :cascade do |t|
     t.integer "search_id"
@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 2018_10_31_234703) do
     t.string "keywords"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "keyword_must_have"
+    t.string "keyword_must_not_have"
+    t.boolean "is_reviewed", default: false
     t.index ["user_id"], name: "index_searches_on_user_id"
   end
 

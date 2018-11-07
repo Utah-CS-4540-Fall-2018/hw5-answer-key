@@ -70,7 +70,8 @@ class ListingsPoll < ApplicationRecord
         url: l.find_element(class: 'listing-item-link').attribute('href'),
         listings_poll_id: self.id
       )
-    log("Recorded listing titled #{l.find_element(class: 'item-info-title-link').attribute('innerHTML')}")
+      log("Recorded listing titled #{l.find_element(class: 'item-info-title-link').attribute('innerHTML')}")
+    end
   end
 
 

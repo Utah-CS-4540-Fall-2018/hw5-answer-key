@@ -2,11 +2,14 @@
 #
 # Table name: searches
 #
-#  id         :integer          not null, primary key
-#  keywords   :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
+#  id                    :integer          not null, primary key
+#  is_reviewed           :boolean          default(FALSE)
+#  keyword_must_have     :string
+#  keyword_must_not_have :string
+#  keywords              :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  user_id               :integer
 #
 # Indexes
 #
